@@ -31,7 +31,7 @@ fun MainScreen() {
             navController = navController,
             startDestination = "login"
         ) {
-            composable(route = "login") { LoginScreen() }
+            composable(route = "login") { LoginScreen(navController = navController) }
         }
     }
 }
