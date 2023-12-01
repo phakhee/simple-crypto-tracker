@@ -3,40 +3,35 @@ package com.example.cryptotracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import com.example.cryptotracker.ui.composables.ActivityHeader
-import com.example.cryptotracker.ui.composables.AuthenticationTextField
-import com.example.cryptotracker.ui.composables.ColumnCenteredContent
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.cryptotracker.ui.composables.AppBox
+import com.example.cryptotracker.ui.screens.LoginScreen
 import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var email by remember { mutableStateOf("") }
-            var password by remember { mutableStateOf("") }
-
             CryptoTrackerTheme {
-                ColumnCenteredContent {
-                    ActivityHeader(text = "Simple Crypto Tracker")
-
-                    AuthenticationTextField(
-                        value=email,
-                        onValueChange = { email = it },
-                        label="E-mail"
-                    )
-
-                    AuthenticationTextField(
-                        value=password,
-                        onValueChange = { password = it },
-                        label="Password"
-                    )
-                }
+                MainScreen()
             }
+        }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+
+    AppBox {
+        NavHost(
+            navController = navController,
+            startDestination = "login"
+        ) {
+            composable(route = "login") { LoginScreen() }
         }
     }
 }
