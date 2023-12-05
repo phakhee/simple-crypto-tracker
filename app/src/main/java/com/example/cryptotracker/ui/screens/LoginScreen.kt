@@ -1,12 +1,11 @@
 package com.example.cryptotracker.ui.screens
 
-import androidx.compose.foundation.layout.Spacer
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.cryptotracker.ui.composables.ActivityHeader
 import com.example.cryptotracker.ui.composables.AuthenticationTextField
@@ -17,14 +16,20 @@ import com.example.cryptotracker.ui.composables.LoginContainer
 import com.example.cryptotracker.ui.composables.FormContainer
 import com.example.cryptotracker.ui.composables.LoginButton
 import com.example.cryptotracker.ui.composables.SignUpButton
+import com.example.cryptotracker.ui.util.authentication
 
 @Composable
 fun LoginScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    fun login() {
+    fun navigateToDashboard() {
+        navController.navigate("dashboard")
+    }
 
+    fun login() {
+        var loginSuccess = authentication.login(email, password) { navigateToDashboard() }
+        println(loginSuccess)
     }
 
     fun signUp() {

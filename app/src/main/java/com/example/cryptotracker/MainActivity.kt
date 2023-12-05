@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cryptotracker.ui.composables.AppBox
+import com.example.cryptotracker.ui.screens.DashboardScreen
 import com.example.cryptotracker.ui.screens.LoginScreen
 import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
 
@@ -32,6 +33,7 @@ fun MainScreen() {
             startDestination = "login"
         ) {
             composable(route = "login") { LoginScreen(navController = navController) }
+            composable(route = "dashboard") { DashboardScreen() }
         }
     }
 }
