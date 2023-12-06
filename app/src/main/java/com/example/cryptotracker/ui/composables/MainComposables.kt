@@ -1,5 +1,6 @@
 package com.example.cryptotracker.ui.composables
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,4 +72,9 @@ fun SubText(
         fontWeight = FontWeight.Normal,
         color = LabelColor
     )
+}
+
+@Composable
+fun ShowToast(text: String, duration: Int) {
+    Toast.makeText(LocalContext.current, text, duration).show()
 }

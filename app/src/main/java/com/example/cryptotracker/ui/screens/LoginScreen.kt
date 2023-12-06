@@ -1,6 +1,6 @@
 package com.example.cryptotracker.ui.screens
 
-import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,24 +12,27 @@ import com.example.cryptotracker.ui.composables.AuthenticationTextField
 import com.example.cryptotracker.ui.composables.ButtonDivider
 import com.example.cryptotracker.ui.composables.ColumnSpacer
 import com.example.cryptotracker.ui.composables.ForgotPasswordButton
-import com.example.cryptotracker.ui.composables.LoginContainer
+import com.example.cryptotracker.ui.composables.AuthenticationContainer
 import com.example.cryptotracker.ui.composables.FormContainer
 import com.example.cryptotracker.ui.composables.LoginButton
+import com.example.cryptotracker.ui.composables.ShowToast
 import com.example.cryptotracker.ui.composables.SignUpButton
 import com.example.cryptotracker.ui.util.authentication
+import com.example.cryptotracker.ui.util.navigateTo
 
 @Composable
 fun LoginScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
-    fun navigateToDashboard() {
-        navController.navigate("dashboard")
-    }
+    var showToast by remember { mutableStateOf(false) }
 
     fun login() {
-        var loginSuccess = authentication.login(email, password) { navigateToDashboard() }
-        println(loginSuccess)
+        authentication.login(
+            email = email,
+            password = password,
+            onSuccess = { navigateTo(navController, "dashboard") },
+            onFail = { showToast = true }
+        )
     }
 
     fun signUp() {
@@ -40,7 +43,7 @@ fun LoginScreen(navController: NavController) {
 
     }
 
-    LoginContainer {
+    AuthenticationContainer {
         ColumnSpacer()
         ActivityHeader(text = "Simple Crypto Tracker")
 
@@ -65,5 +68,10 @@ fun LoginScreen(navController: NavController) {
 
         ColumnSpacer()
         ForgotPasswordButton(value = "Forgot Password", onClick = { forgotPassword() })
+
+        if (showToast) {
+            ShowToast(text = "Invalid e-mail and/or password", duration = Toast.LENGTH_SHORT)
+            showToast = false
+        }
     }
 }

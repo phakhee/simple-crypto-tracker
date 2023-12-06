@@ -36,7 +36,7 @@ import com.example.cryptotracker.ui.theme.NeonGreen
 import com.example.cryptotracker.ui.theme.TextColor
 
 @Composable
-fun LoginContainer(
+fun AuthenticationContainer(
     content: @Composable ColumnScope.() -> Unit
 ) {
     Column(

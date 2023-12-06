@@ -7,13 +7,22 @@ import com.google.firebase.ktx.Firebase
 
 class Authentication {
     private var auth: FirebaseAuth = Firebase.auth
-    private lateinit var user: FirebaseUser
+    private var user: FirebaseUser
+
+    init {
+        this.user = this.auth.currentUser!!
+    }
 
     fun getUser(): FirebaseUser {
         return this.user
     }
 
-    fun login(email: String, password: String, onSuccess: () -> Unit) {
+    fun login(
+        email: String,
+        password: String,
+        onSuccess: () -> Unit,
+        onFail: () -> Unit
+    ) {
         if (isValidEmail(email) && password.isNotEmpty()) {
             this.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -21,6 +30,7 @@ class Authentication {
                         this.user = this.auth.currentUser!!
                         onSuccess()
                     }
+                    else onFail()
                 }
         }
     }
