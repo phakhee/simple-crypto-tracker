@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
-import com.example.cryptotracker.ui.composables.ActivityHeader
+import com.example.cryptotracker.ui.composables.MainHeader
 import com.example.cryptotracker.ui.composables.StyledTextField
 import com.example.cryptotracker.ui.composables.ButtonDivider
 import com.example.cryptotracker.ui.composables.ColumnSpacer
@@ -45,7 +45,7 @@ fun LoginScreen(navController: NavController) {
 
     AuthenticationContainer {
         ColumnSpacer()
-        ActivityHeader(text = "Simple Crypto Tracker")
+        MainHeader(text = "Simple Crypto Tracker")
 
         FormContainer {
             StyledTextField(

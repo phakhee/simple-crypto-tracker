@@ -10,3 +10,5 @@ fun isValidEmail(email: String): Boolean {
 fun navigateTo(navController: NavController, route: String) {
     navController.navigate(route)
 }
+
+fun Double.round(decimals: Int = 2): Double = "%.${decimals}f".format(this).toDouble()

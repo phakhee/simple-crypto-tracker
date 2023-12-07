@@ -6,8 +6,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -50,14 +51,27 @@ fun ColumnScope.ColumnSpacer() {
 }
 
 @Composable
-fun ActivityHeader(
+fun MainHeader(
     text: String
 ) {
     Text(
-        modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 16.dp),
+        modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 16.dp),
         text = text,
         fontSize = 36.sp,
         lineHeight = 40.sp,
+        fontWeight = FontWeight.Bold,
+        color = TextColor
+    )
+}
+
+@Composable
+fun SubHeader(
+    text: String
+) {
+    Text(
+        text = text,
+        fontSize = 24.sp,
+        lineHeight = 24.sp,
         fontWeight = FontWeight.Bold,
         color = TextColor
     )
@@ -97,17 +111,19 @@ fun StyledTextField(
     label: String,
     value: String,
     type: String = "",
+    icon: (@Composable () -> Unit)? = null,
     onValueChange: (String) -> Unit,
 ) {
     TextField(
         modifier = Modifier
-            .padding(0.dp, 0.dp, 0.dp, 16.dp)
+            .padding(0.dp, 16.dp, 0.dp, 16.dp)
             .fillMaxWidth()
             .background(Color.Transparent),
         textStyle = TextStyle(
             fontWeight = FontWeight.Normal,
             color = TextColor
         ),
+        leadingIcon = { icon?.invoke() },
         value = value,
         onValueChange = { onValueChange(it) },
         label = {
@@ -139,7 +155,9 @@ fun ColumnScope.CenteredContent(
     content: @Composable () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize().weight(1f),
+        modifier = Modifier
+            .fillMaxSize()
+            .weight(1f),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

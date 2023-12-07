@@ -1,0 +1,25 @@
+package com.example.cryptotracker.ui.classes
+
+data class CryptoQuote(
+    val id: Long,
+    val name: String,
+    val symbol: String,
+    val slug: String,
+    val isActive: Long,
+    val isFiat: Long,
+    val circulatingSupply: Double,
+    val totalSupply: Double,
+    val maxSupply: Any?,
+    val numMarketPairs: Long,
+    val cmcRank: Long,
+    val price: Double,
+    val volume24h: Double,
+    val volumeChange24h: Double,
+    val percentChange1h: Double,
+    val percentChange24h: Double,
+    val percentChange7d: Double,
+    val percentChange30d: Double,
+    val marketCap: Double,
+    val marketCapDominance: Double,
+    val fullyDilutedMarketCap: Double,
+)

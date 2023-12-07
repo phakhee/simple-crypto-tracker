@@ -2,8 +2,10 @@ package com.example.cryptotracker.ui.util
 
 import coil.compose.AsyncImage
 import com.example.cryptotracker.ui.classes.Crypto
+import com.example.cryptotracker.ui.classes.CryptoQuote
 import com.google.gson.Gson
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
@@ -25,11 +27,21 @@ class CryptoClient {
 
     private val retrieveCryptoUrl: String = "https://retrieve-crypto.kouhai.workers.dev/all"
 
+
     suspend fun retrieveAllCrypto(): List<Crypto> {
         val gson = Gson()
         val response = this.client.get(retrieveCryptoUrl).bodyAsText()
 
         return gson.fromJson(response, Array<Crypto>::class.java).toList()
+    }
+
+    suspend fun retrieveCryptoQuote(id: String): CryptoQuote {
+        val gson = Gson()
+        val response = this.client.get(
+            "https://retrieve-crypto.kouhai.workers.dev/data?id=$id"
+        ).bodyAsText()
+
+        return gson.fromJson(response, CryptoQuote::class.java)
     }
 }
 
