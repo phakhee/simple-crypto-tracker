@@ -1,6 +1,12 @@
 package com.example.cryptotracker.ui.screens
 
 import android.widget.Toast
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,6 +23,8 @@ import com.example.cryptotracker.ui.composables.FormContainer
 import com.example.cryptotracker.ui.composables.LoginButton
 import com.example.cryptotracker.ui.composables.ShowToast
 import com.example.cryptotracker.ui.composables.SignUpButton
+import com.example.cryptotracker.ui.theme.LabelColor
+import com.example.cryptotracker.ui.theme.TextColor
 import com.example.cryptotracker.ui.util.authentication
 import com.example.cryptotracker.ui.util.navigateTo
 
@@ -51,14 +59,28 @@ fun LoginScreen(navController: NavController) {
             StyledTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = "E-mail"
+                label = "E-mail",
+                icon = {
+                    Icon(
+                        imageVector = Icons.Filled.Email,
+                        contentDescription = "Email icon",
+                        tint = LabelColor
+                    )
+                }
             )
 
             StyledTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = "Password",
-                type = "password"
+                type = "password",
+                icon = {
+                    Icon(
+                        imageVector = Icons.Filled.Lock,
+                        contentDescription = "Lock icon",
+                        tint = LabelColor
+                    )
+                }
             )
         }
 
