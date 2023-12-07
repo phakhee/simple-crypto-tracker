@@ -64,9 +64,7 @@ fun DataOverview(crypto: Crypto) {
         MetaDataColumn {
             QuoteRow {
                 CryptoDropdownIcon(url = crypto.logo, description = crypto.id.toString())
-                Spacer(modifier = Modifier.width(8.dp))
                 SubHeader(text = crypto.name)
-                Spacer(modifier = Modifier.width(8.dp))
                 SubText(text = crypto.symbol)
             }
             QuoteRow {
@@ -88,7 +86,6 @@ fun DataOverview(crypto: Crypto) {
             }
             QuoteRow {
                 PriceText(text = "$${usFormat.format(cryptoQuote.value!!.price.round())}")
-                Spacer(modifier = Modifier.width(8.dp))
                 PriceChange(value = getPriceChange(cryptoQuote.value!!).round())
             }
         }
@@ -97,7 +94,6 @@ fun DataOverview(crypto: Crypto) {
                 QuoteDataName(text = "Rank")
                 QuoteDataValue(text = "#${cryptoQuote.value!!.cmcRank}")
             }
-            Spacer(modifier = Modifier.width(8.dp))
             QuoteData(fill=0.7f) {
                 QuoteDataName(text = "Market Cap")
                 QuoteDataValue(
@@ -112,7 +108,6 @@ fun DataOverview(crypto: Crypto) {
                     text = "$${usFormat.format(cryptoQuote.value!!.volume24h.round())}"
                 )
             }
-            Spacer(modifier = Modifier.width(8.dp))
             QuoteData(fill=0.5f) {
                 QuoteDataName(text = "Volume/Market cap (24h)")
                 QuoteDataValue(
@@ -130,7 +125,6 @@ fun DataOverview(crypto: Crypto) {
                     text = "${usFormat.format(cryptoQuote.value!!.circulatingSupply.roundToInt())} ${crypto.symbol}"
                 )
             }
-            Spacer(modifier = Modifier.width(8.dp))
             QuoteData(fill=0.47f) {
                 QuoteDataName(text = "Total supply")
                 QuoteDataValue(

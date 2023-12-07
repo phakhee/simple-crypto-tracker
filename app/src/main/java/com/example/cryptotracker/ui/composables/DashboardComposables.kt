@@ -2,6 +2,7 @@ package com.example.cryptotracker.ui.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -93,9 +94,8 @@ fun CryptoDropdownItem(
 ) {
     DropdownMenuItem(
         text = {
-            Row {
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 MainText(text = text)
-                Spacer(modifier = Modifier.width(4.dp))
                 SubText(text = subText)
             }
         },
@@ -148,7 +148,8 @@ fun QuoteRow(
             .padding(0.dp, 0.dp, 0.dp, 8.dp)
             .height(IntrinsicSize.Min)
             .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         content()
     }
