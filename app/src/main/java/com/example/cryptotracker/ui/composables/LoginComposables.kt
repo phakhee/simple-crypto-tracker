@@ -56,45 +56,11 @@ fun FormContainer(
 ) {
     Column(
         modifier = Modifier
-            .padding(0.dp, 0.dp, 0.dp, 32.dp)
+            .padding(0.dp, 16.dp, 0.dp, 32.dp)
             .fillMaxWidth()
     ) {
         content()
     }
-}
-
-@Composable
-fun AuthenticationTextField(
-    label: String,
-    value: String,
-    type: String = "",
-    onValueChange: (String) -> Unit,
-) {
-    TextField(
-        modifier = Modifier
-            .padding(0.dp, 0.dp, 0.dp, 16.dp)
-            .fillMaxWidth()
-            .background(Color.Transparent),
-        textStyle = TextStyle(
-            fontWeight = FontWeight.Normal,
-            color = TextColor
-        ),
-        value = value,
-        onValueChange = { onValueChange(it) },
-        label = {
-            Text(
-                text = label,
-                fontWeight = FontWeight.Normal,
-                color = LabelColor
-            )
-        },
-        visualTransformation = if (type == "password")
-            PasswordVisualTransformation() else VisualTransformation.None,
-        colors = OutlinedTextFieldDefaults.colors(
-            unfocusedBorderColor = LabelColor,
-            focusedBorderColor = TextColor
-        )
-    )
 }
 
 @Composable

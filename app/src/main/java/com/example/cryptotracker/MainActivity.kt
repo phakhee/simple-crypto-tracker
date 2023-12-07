@@ -36,13 +36,13 @@ fun MainScreen() {
     AppBox {
         NavHost(
             navController = navController,
-            startDestination = if (user == null) "login" else "dashboard"
+            startDestination = "login"
         ) {
-            if (user == null) {
-                composable(route = "login") { LoginScreen(navController = navController) }
-            } else {
-                composable(route = "dashboard") { DashboardScreen() }
+            composable(route = "login") {
+                if (user == null) LoginScreen(navController = navController)
+                else DashboardScreen()
             }
+            composable(route = "dashboard") { DashboardScreen() }
         }
     }
 }

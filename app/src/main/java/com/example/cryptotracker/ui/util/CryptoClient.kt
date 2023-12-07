@@ -1,5 +1,6 @@
 package com.example.cryptotracker.ui.util
 
+import coil.compose.AsyncImage
 import com.example.cryptotracker.ui.classes.Crypto
 import com.google.gson.Gson
 import io.ktor.client.HttpClient
@@ -22,7 +23,7 @@ class CryptoClient {
         }
     }
 
-    private val retrieveCryptoUrl: String = "https://retrieve-crypto.kouhai.workers.dev/"
+    private val retrieveCryptoUrl: String = "https://retrieve-crypto.kouhai.workers.dev/all"
 
     suspend fun retrieveAllCrypto(): List<Crypto> {
         val gson = Gson()

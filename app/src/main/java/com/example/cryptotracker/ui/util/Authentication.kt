@@ -7,15 +7,7 @@ import com.google.firebase.ktx.Firebase
 
 class Authentication {
     private var auth: FirebaseAuth = Firebase.auth
-    private var user: FirebaseUser
-
-    init {
-        this.user = this.auth.currentUser!!
-    }
-
-    fun getUser(): FirebaseUser {
-        return this.user
-    }
+    private lateinit var user: FirebaseUser
 
     fun login(
         email: String,

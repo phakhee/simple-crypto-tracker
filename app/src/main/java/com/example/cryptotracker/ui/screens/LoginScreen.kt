@@ -8,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 import com.example.cryptotracker.ui.composables.ActivityHeader
-import com.example.cryptotracker.ui.composables.AuthenticationTextField
+import com.example.cryptotracker.ui.composables.StyledTextField
 import com.example.cryptotracker.ui.composables.ButtonDivider
 import com.example.cryptotracker.ui.composables.ColumnSpacer
 import com.example.cryptotracker.ui.composables.ForgotPasswordButton
@@ -48,13 +48,13 @@ fun LoginScreen(navController: NavController) {
         ActivityHeader(text = "Simple Crypto Tracker")
 
         FormContainer {
-            AuthenticationTextField(
+            StyledTextField(
                 value = email,
                 onValueChange = { email = it },
                 label = "E-mail"
             )
 
-            AuthenticationTextField(
+            StyledTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = "Password",
